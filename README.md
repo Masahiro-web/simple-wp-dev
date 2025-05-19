@@ -12,6 +12,7 @@ tailwindcss v4がインストールされます。
 - npm または yarn
 
 ## セットアップ
+環境の起動時にDockerが実行されていることを確認してください。
 
 1. リポジトリをクローン
 2. 依存関係のインストール
@@ -30,6 +31,24 @@ tailwindcss v4がインストールされます。
     ```bash
     npm run start
     ```
+
+## 開発
+
+- WordPress環境は `http://localhost:8888` でアクセスできます
+  - 管理画面: `http://localhost:8888/wp-admin/`
+  - ユーザー名: `admin`
+  - パスワード: `password`
+- フロントエンドの開発には Vite を使用します（`http://localhost:3000`）
+- テーマの変更は `./theme` ディレクトリ内で行います
+- ソースファイルは `./theme/src` ディレクトリにあります
+
+## 主なnpmコマンド
+
+- `npm run start` - WordPress環境とVite開発サーバーを同時に起動
+- `npm run wp-env start` - WordPressのDocker環境のみを起動
+- `npm run dev` - Vite開発サーバーのみを起動
+- `npm run stop` - WordPress環境を停止
+- `npm run destroy` - WordPress環境を完全に削除（データも削除）
 
 ### データベースのバックアップ
 SQLファイルとしてデータベースをエクスポートするには、以下のコマンドを使用します。
@@ -52,24 +71,6 @@ npm run restore-db ./sql/バックアップファイル名.sql
 # 例
 npm run restore-db ./sql/backup-20250519.sql
 ```
-
-## 開発
-
-- WordPress環境は `http://localhost:8888` でアクセスできます
-  - 管理画面: `http://localhost:8888/wp-admin/`
-  - ユーザー名: `admin`
-  - パスワード: `password`
-- フロントエンドの開発には Vite を使用します（`http://localhost:3000`）
-- テーマの変更は `./theme` ディレクトリ内で行います
-- ソースファイルは `./theme/src` ディレクトリにあります
-
-## 主なnpmコマンド
-
-- `npm run start` - WordPress環境とVite開発サーバーを同時に起動
-- `npm run wp-env start` - WordPressのDocker環境のみを起動
-- `npm run dev` - Vite開発サーバーのみを起動
-- `npm run stop` - WordPress環境を停止
-- `npm run destroy` - WordPress環境を完全に削除（データも削除）
 
 ## ビルド
 
