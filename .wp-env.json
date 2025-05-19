@@ -1,0 +1,17 @@
+{
+  "core": "https://ja.wordpress.org/wordpress-6.5.3-ja.zip",
+  "phpVersion": "8.1",
+  "plugins": [],
+  "themes": [
+    "./theme"
+  ],
+  "port": 8888,
+  "config": {
+    "WP_DEBUG": true,
+    "SCRIPT_DEBUG": true
+  },
+  "mappings": {
+    "wp-content/themes/vite-wp-env-dev/": "./dist",
+    "sql": "./sql"
+  }
+}

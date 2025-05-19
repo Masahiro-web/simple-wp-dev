@@ -1,0 +1,23 @@
+{
+  "name": "wp-vite-dev",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "wp-env": "wp-env",
+    "start": "wp-env start && npm run dev",
+    "stop": "wp-env stop",
+    "destroy": "wp-env destroy",
+    "backup-db": "npm run wp-env run cli wp db export ./sql/backup-$(date +%Y%m%d).sql",
+    "backup-db-win": "powershell -Command \"npm run wp-env run cli wp db export ./sql/backup-$(Get-Date -Format 'yyyyMMdd').sql\"",
+    "restore-db": "npm run wp-env run cli wp db import"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.7",
+    "@wordpress/env": "^8.7.0",
+    "sass": "^1.69.5",
+    "vite": "^6.3.5"
+  }
+}
