@@ -10,7 +10,7 @@ function vite_get_asset_url($asset) {
     return 'http://localhost:3000/' . $asset;
   } else {
     // 本番環境では、ビルドされたアセットを使用
-    $manifest = get_theme_file_path('/dist/manifest.json');
+    $manifest = get_theme_file_path('/dist/.vite/manifest.json');
     
     if (file_exists($manifest)) {
       $manifest_content = json_decode(file_get_contents($manifest), true);
