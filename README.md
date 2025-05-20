@@ -1,9 +1,9 @@
 # WordPress + Vite + Docker 開発環境
 
 Docker、Vite、WP-Envを使用してWordPressのローカル開発環境を構築します。
-`theme/src`ディレクトリ内のscssとjsの最適化及びトランスパイルを実行します。
+`/theme/src`ディレクトリ内のscssとjsの最適化及びトランスパイルを実行します。
 開発環境ではsrcディレクトリの変更はホットリロードに対応しています。（Mac未検証）
-tailwindcss v4がインストールされます。
+tailwindcss v4がインストールされています。
 
 ## 開発環境側でインストールが必要なもの
 
@@ -80,7 +80,7 @@ npm run restore-db ./sql/backup-20250519.sql
 npm run build
 ```
 
-これにより、`theme/dist` ディレクトリにビルドされたアセットが生成されます。
+これにより、`/theme/dist` ディレクトリにビルドされたアセットが生成されます。
 
 ## フォルダ構造
 
@@ -109,3 +109,4 @@ npm run build
 
 - 初回のビルドには時間がかかる場合があります。
 - キャッシュの問題で変更が反映されない場合があります。その際はブラウザのキャッシュをクリアしてください。
+- ビルド時にTailwindcssの記述がdistのcssに含まれますが不要な場合は`/src/scss/style.scss`の1行目を削除してください。
