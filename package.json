@@ -12,12 +12,21 @@
     "destroy": "wp-env destroy",
     "backup-db": "npm run wp-env run cli wp db export ./sql/backup-$(date +%Y%m%d).sql",
     "backup-db-win": "powershell -Command \"npm run wp-env run cli wp db export ./sql/backup-$(Get-Date -Format 'yyyyMMdd').sql\"",
-    "restore-db": "npm run wp-env run cli wp db import"
+    "restore-db": "npm run wp-env run cli wp db import",
+    "setup": "node setup.js && npm run dev",
+    "phpmyadmin:start": "docker-compose -f docker-compose.phpmyadmin.yml up -d",
+    "phpmyadmin:stop": "docker-compose -f docker-compose.phpmyadmin.yml down"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.7",
+    "@tailwindcss/postcss": "^4.1.7",
     "@wordpress/env": "^8.7.0",
     "sass": "^1.69.5",
     "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.7",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.7"
   }
 }

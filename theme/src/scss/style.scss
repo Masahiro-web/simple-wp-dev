@@ -1,6 +1,8 @@
 // tailwindcssが不要な場合は削除してください
 @use "tailwindcss";
 
+//以下サンプルデータ用なので必要に応じて削除してください
+
 // Variables
 $primary-color: #0073aa;
 $secondary-color: #23282d;
@@ -13,15 +15,6 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
-}
-
-a {
-  color: $primary-color;
-  text-decoration: none;
-  
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 // Header
@@ -56,18 +49,10 @@ a {
   }
 }
 
-// Main content
-.site-main {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
 // Footer
 .site-footer {
   background-color: $secondary-color;
   color: white;
   text-align: center;
   padding: 1rem;
-  margin-top: 2rem;
 }

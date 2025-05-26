@@ -26,13 +26,15 @@ function vite_get_asset_url($asset) {
 // スタイルとスクリプトを読み込む
 function theme_enqueue_assets() {
   if (wp_get_environment_type() === 'local') {
-    // 開発環境では、Vite開発サーバーからHMRスクリプトをモジュールとして読み込む
-    wp_enqueue_script_module('vite-client', 'http://localhost:3000/@vite/client', array(), null, false);
+    // 開発環境では、Vite開発サーバーからHMRスクリプトとして読み込む
+    wp_enqueue_script('vite-client', 'http://localhost:3000/@vite/client', array(), null, false);
+    wp_script_add_data('vite-client', 'type', 'module'); // モジュールタイプを指定
   }
   
   wp_enqueue_style('theme-style', vite_get_asset_url('scss/style.scss'), array(), null);
   
-  // main.jsもモジュールとして読み込む
-  wp_enqueue_script_module('theme-script', vite_get_asset_url('js/main.js'), array(), null, true);
+  // main.jsをモジュールとして読み込む
+  wp_enqueue_script('theme-script', vite_get_asset_url('js/main.js'), array(), null, true);
+  wp_script_add_data('theme-script', 'type', 'module'); // モジュールタイプを指定
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_assets');

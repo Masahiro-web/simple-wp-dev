@@ -1,5 +1,5 @@
 {
-  "core": "https://ja.wordpress.org/wordpress-6.5.3-ja.zip",
+  "core": "https://ja.wordpress.org/latest-ja.zip",
   "phpVersion": "8.1",
   "plugins": [],
   "themes": [
@@ -11,7 +11,7 @@
     "SCRIPT_DEBUG": true
   },
   "mappings": {
-    "wp-content/themes/vite-wp-env-dev/": "./dist",
+    "wp-content/themes/theme/dist": "./dist",
     "sql": "./sql"
   }
 }

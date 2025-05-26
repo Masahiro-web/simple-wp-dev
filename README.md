@@ -2,8 +2,8 @@
 
 Docker、Vite、WP-Envを使用してWordPressのローカル開発環境を構築します。
 `/theme/src`ディレクトリ内のscssとjsの最適化及びトランスパイルを実行します。
-開発環境ではsrcディレクトリの変更はホットリロードに対応しています。（Mac未検証）
-tailwindcss v4がインストールされています。
+開発環境ではsrcディレクトリの変更はHMR(ホットリロード)に対応しています。（Mac未検証）
+デフォルトでtailwindcss(v4)の記述が利用可能です。
 
 ## 開発環境側でインストールが必要なもの
 
@@ -31,6 +31,10 @@ tailwindcss v4がインストールされています。
     ```bash
     npm run start
     ```
+    phpmyadminも同時起動する場合
+    ```bash
+    npm run setup
+    ```
 
 ## 開発
 
@@ -45,10 +49,13 @@ tailwindcss v4がインストールされています。
 ## 主なnpmコマンド
 
 - `npm run start` - WordPress環境とVite開発サーバーを同時に起動
+- `npm run setup` - WordPress環境とVite開発サーバーを同時に起動（phpmyadminのコンテナも構築する）
 - `npm run wp-env start` - WordPressのDocker環境のみを起動
 - `npm run dev` - Vite開発サーバーのみを起動
 - `npm run stop` - WordPress環境を停止
 - `npm run destroy` - WordPress環境を完全に削除（データも削除）
+- `phpmyadmin:start` - phpmyadminを起動する
+- `phpmyadmin:stop` - phpmyadminを停止する
 
 ### データベースのバックアップ
 SQLファイルとしてデータベースをエクスポートするには、以下のコマンドを使用します。
@@ -89,6 +96,7 @@ npm run build
 ├── theme/                  # WordPressテーマディレクトリ
 │   ├── dist/              # ビルドされたアセット（JS, CSS）
 │   ├── src/               # ソースファイル
+|   |   ├── images/       # 画像ファイル（scss内でbackground-image等で指定されたファイルのみ格納する）
 │   │   ├── js/           # JavaScriptファイル
 │   │   │   └── main.js   # メインのJavaScriptファイル
 │   │   └── scss/         # SCSSファイル
@@ -110,3 +118,4 @@ npm run build
 - 初回のビルドには時間がかかる場合があります。
 - キャッシュの問題で変更が反映されない場合があります。その際はブラウザのキャッシュをクリアしてください。
 - ビルド時にTailwindcssの記述がdistのcssに含まれますが不要な場合は`/src/scss/style.scss`の1行目を削除してください。
+- `/src/scss/style.scss`で指定された背景画像ファイルは`/src/images/`ディレクトリに格納してください。
