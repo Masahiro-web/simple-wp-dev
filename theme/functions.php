@@ -27,14 +27,22 @@ function vite_get_asset_url($asset) {
 function theme_enqueue_assets() {
   if (wp_get_environment_type() === 'local') {
     // 開発環境では、Vite開発サーバーからHMRスクリプトとして読み込む
-    wp_enqueue_script('vite-client', 'http://localhost:3000/@vite/client', array(), null, false);
-    wp_script_add_data('vite-client', 'type', 'module'); // モジュールタイプを指定
+    wp_enqueue_script('vite-client', 'http://localhost:3000/@vite/client', array(), null, true);
   }
-  
-  wp_enqueue_style('theme-style', vite_get_asset_url('scss/style.scss'), array(), null);
-  
-  // main.jsをモジュールとして読み込む
-  wp_enqueue_script('theme-script', vite_get_asset_url('js/main.js'), array(), null, true);
-  wp_script_add_data('theme-script', 'type', 'module'); // モジュールタイプを指定
+    wp_enqueue_style('theme-style', vite_get_asset_url('scss/style.scss'), array(), null);
+    
+    // main.jsをモジュールとして読み込む
+    wp_enqueue_script('theme-script', vite_get_asset_url('js/main.js'), array(), null, true);
+
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
+
+// type="module"属性を付与するフィルター
+function add_module_type_attribute($tag, $handle, $src) {
+  // Vite関連のスクリプトにtype="module"を追加
+  if (in_array($handle, ['vite-client', 'theme-script'])) {
+    $tag = str_replace('<script ', '<script type="module" ', $tag);
+  }
+  return $tag;
+}
+add_filter('script_loader_tag', 'add_module_type_attribute', 10, 3);
