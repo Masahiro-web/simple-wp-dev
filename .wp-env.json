@@ -11,7 +11,7 @@
     "SCRIPT_DEBUG": true
   },
   "mappings": {
-    "wp-content/themes/theme/dist": "./dist",
+    "wp-content/themes/theme/dist": "./theme/dist",
     "sql": "./sql"
   }
 }
